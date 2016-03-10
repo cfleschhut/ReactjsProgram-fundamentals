@@ -54,20 +54,97 @@
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
 
-	var HelloWorld = React.createClass({
-	  displayName: 'HelloWorld',
+	var USER_DATA = {
+	  image: 'https://avatars3.githubusercontent.com/u/34942',
+	  name: 'Christian Fleschhut',
+	  username: 'cfleschhut'
+	};
+
+	var ShowList = React.createClass({
+	  displayName: 'ShowList',
 
 	  render: function () {
+	    var listItems = this.props.names.map(function (friend, index) {
+	      return React.createElement(
+	        'li',
+	        { key: index },
+	        friend
+	      );
+	    });
 	    return React.createElement(
 	      'div',
 	      null,
-	      'Hello World! ',
-	      this.props.foo
+	      React.createElement(
+	        'h3',
+	        null,
+	        'Friends'
+	      ),
+	      React.createElement(
+	        'ul',
+	        null,
+	        listItems
+	      )
 	    );
 	  }
 	});
 
-	ReactDOM.render(React.createElement(HelloWorld, { foo: 'asdf' }), document.getElementById('app'));
+	var FriendsContainer = React.createClass({
+	  displayName: 'FriendsContainer',
+
+	  render: function () {
+	    var name = 'Manfred';
+	    var friends = ['Alice', 'Bob', 'John'];
+
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(Avatar, { user: USER_DATA }),
+	      React.createElement(
+	        'h3',
+	        null,
+	        'Name: ',
+	        name
+	      ),
+	      React.createElement(ShowList, { names: friends })
+	    );
+	  }
+	});
+
+	var ProfilePic = function (props) {
+	  return React.createElement('img', { src: props.imageUrl, style: { width: '230px', height: '230px' } });
+	};
+
+	var ProfileName = function (props) {
+	  return React.createElement(
+	    'div',
+	    null,
+	    props.name
+	  );
+	};
+
+	var ProfileLink = function (props) {
+	  return React.createElement(
+	    'div',
+	    null,
+	    React.createElement(
+	      'a',
+	      { href: 'https://www.github.com/' + props.username },
+	      props.username
+	    )
+	  );
+	};
+
+	var Avatar = function (props) {
+	  return React.createElement(
+	    'div',
+	    null,
+	    React.createElement(ProfilePic, { imageUrl: props.user.image }),
+	    React.createElement(ProfileName, { name: props.user.name }),
+	    React.createElement(ProfileLink, { username: props.user.username })
+	  );
+	};
+
+	ReactDOM.render(React.createElement(FriendsContainer, null), document.getElementById('app'));
 
 /***/ },
 /* 2 */
