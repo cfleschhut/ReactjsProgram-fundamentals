@@ -16,7 +16,7 @@ var Prompt = function(props) {
                 onChange={props.onUpdateUser}
                 value={props.username} />
             </div>
-            <button type='submit' className='btn btn-block btn-success'>
+            <button type='submit' className='btn btn-block btn-lg btn-success'>
               Continue
             </button>
           </form>
