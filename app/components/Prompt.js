@@ -1,28 +1,27 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 var transparentBg = require('../styles').transparentBg;
+var MainContainer = require('./MainContainer');
 
 var Prompt = function(props) {
   return (
-    <div className='row'>
-      <div className='col-sm-8 col-sm-offset-2'>
-        <div className='jumbotron text-center' style={transparentBg}>
-          <h1>{props.header}</h1>
-          <form onSubmit={props.onSubmitUser}>
-            <div className='form-group'>
-              <input type='text'
-                className='form-control'
-                placeholder='GitHub username'
-                onChange={props.onUpdateUser}
-                value={props.username} />
-            </div>
-            <button type='submit' className='btn btn-block btn-lg btn-success'>
-              Continue
-            </button>
-          </form>
-        </div>
+    <MainContainer>
+      <div className='jumbotron text-center' style={transparentBg}>
+        <h1>{props.header}</h1>
+        <form onSubmit={props.onSubmitUser}>
+          <div className='form-group'>
+            <input type='text'
+              className='form-control'
+              placeholder='GitHub username'
+              onChange={props.onUpdateUser}
+              value={props.username} />
+          </div>
+          <button type='submit' className='btn btn-block btn-lg btn-success'>
+            Continue
+          </button>
+        </form>
       </div>
-    </div>
+    </MainContainer>
   );
 };
 
