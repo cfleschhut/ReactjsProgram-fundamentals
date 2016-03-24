@@ -5,6 +5,7 @@ var UserDetails = require('./UserDetails');
 var Link = require('react-router').Link;
 var styles = require('../styles');
 var MainContainer = require('./MainContainer');
+var Loading = require('./Loading');
 
 function StartOver() {
   return (
@@ -34,7 +35,7 @@ var Results = function(props) {
   return (
     props.isLoading ?
     <MainContainer>
-      <h1 className='page-header'>Loading…</h1>
+      <Loading speed={200} />
     </MainContainer> :
     <MainContainer>
       <h1 className='page-header'>Results</h1>

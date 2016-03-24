@@ -5,12 +5,13 @@ var UserDetailsWrapper = require('./UserDetailsWrapper');
 var UserDetails = require('./UserDetails');
 var styles = require('../styles');
 var MainContainer = require('./MainContainer');
+var Loading = require('./Loading');
 
 var ConfirmBattle = function(props) {
   return (
     props.isLoading ?
     <MainContainer>
-      <h1 className='page-header'>Loading…</h1>
+      <Loading speed={200} />
     </MainContainer> :
     <MainContainer>
       <h1 className='page-header'>Confirm Players</h1>
